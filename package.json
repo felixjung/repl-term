@@ -1,0 +1,17 @@
+{
+  "name": "repl-term",
+  "main": "./lib/repl-term",
+  "version": "0.0.1",
+  "description": "A package for sending code to a REPL running in Terminal.app or iTerm.app",
+  "activationCommands": {
+    "atom-workspace": "repl-term:launch-repl"
+  },
+  "repository": "https://github.com/felixjung/repl-term",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0"
+  },
+  "dependencies": {
+    "node-osascript": "1.0.2"
+  }
+}

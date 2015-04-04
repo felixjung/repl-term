@@ -1,0 +1,14 @@
+# Keybindings require three things to be fully defined: A selector that is
+# matched against the focused element, the keystroke and the command to
+# execute.
+#
+# Below is a basic keybinding which registers on all platforms by applying to
+# the root workspace element.
+
+# For more detailed documentation see
+# https://atom.io/docs/latest/behind-atom-keymaps-in-depth
+'.platform-darwin  .atom-text-editor':
+  'cmd-alt-r': 'repl-term:send-file'
+  'cmd-alt-s': 'repl-term:send'
+  'cmd-alt-l': 'repl-term:launch-repl'
+  'cmd-alt-k': 'repl-term:close-repl'
