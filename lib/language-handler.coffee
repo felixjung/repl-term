@@ -1,0 +1,6 @@
+module.exports =
+  sourceCommand: (filePath) ->
+    if condition
+      # body...
+    else
+      # body...

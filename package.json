@@ -1,5 +1,5 @@
 {
-  "name": "repl-term",
+  "name": "REPL Term",
   "main": "./lib/repl-term",
   "version": "0.0.1",
   "description": "A package for sending code to a REPL running in Terminal.app or iTerm.app",

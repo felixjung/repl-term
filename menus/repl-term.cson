@@ -1,8 +1,9 @@
-# See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
+# See https://atom.io/docs/latest/hacking-atom-package-word-count#menus
+# for more details
 'context-menu':
   'atom-text-editor': [
     {
-      'label': 'Send Line'
+      'label': 'Send line to REPL'
       'command': 'repl-term:send'
     }
   ]
@@ -21,7 +22,7 @@
           'command': 'repl-term:close-repl'
         }
         {
-          'label': 'Send File'
+          'label': 'Load file'
           'command': 'repl-term:send-file'
         }
         {

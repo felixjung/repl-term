@@ -1,11 +1,12 @@
 settings =
   config:
     preferredTerminal:
-      title: 'Use either Terminal or iTerm'
-      description: 'The package supports either Terminal
-                    or iTerm to run the REPL.'
+      title: 'Terminal Emulator'
+      description: 'The package supports Terminal.app
+                    and iTerm.app.'
       type: 'string'
-      enum: ['Terminal', 'iTerm']
+      default: 'Terminal.app'
+      enum: ['Terminal.app', 'iTerm.app']
       order: 1
 
 module.exports = settings
