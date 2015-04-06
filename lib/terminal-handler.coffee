@@ -4,7 +4,7 @@ String::addSlashes = ->
   @replace(/[\\""]/g, "\\$&").replace /\u0000/g, "\\0"
 
 module.exports =
-  Terminal: atom.config.get('repl-term.preferredTerminal')
+  Terminal: "Terminal.app" #atom.config.get('repl-term.preferredTerminal')
   TermId: {}
   Osascript: require "node-osascript"
 
@@ -33,8 +33,7 @@ module.exports =
         if err
           console.error err
         else
-          # FIXME: Fix command being loaded before REPL is ready
-          setTimeout () => callback termId, 2000
+          setTimeout callback, 1000, termId
 
   # Closes the terminal window, if still open
   quitRepl: ->
