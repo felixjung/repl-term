@@ -1,6 +1,5 @@
 {CompositeDisposable} = require 'atom'
 terminalHandler = require './terminal-handler'
-settings        = require './settings'
 
 module.exports =
   # FIXME: the default terminal is not written.
