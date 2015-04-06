@@ -7,7 +7,7 @@
 
 # For more detailed documentation see
 # https://atom.io/docs/latest/behind-atom-keymaps-in-depth
-'.platform-darwin  .atom-text-editor':
+'.platform-darwin .atom-text-editor':
   'cmd-alt-r': 'repl-term:send-file'
   'cmd-alt-s': 'repl-term:send'
   'cmd-alt-l': 'repl-term:launch-repl'
