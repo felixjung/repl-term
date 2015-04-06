@@ -11,7 +11,7 @@
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'repl-term'
+      'label': 'REPL Term'
       'submenu': [
         {
           'label': 'Launch REPL'
