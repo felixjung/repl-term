@@ -1,10 +1,12 @@
+settings        = require './settings'
 languageHandler = require './language-handler'
 
 String::addSlashes = ->
   @replace(/[\\""]/g, "\\$&").replace /\u0000/g, "\\0"
 
 module.exports =
-  Terminal: "Terminal.app" #atom.config.get('repl-term.preferredTerminal')
+  Terminal: atom.config.get('repl-term.terminalEmulator') ?
+    settings.terminalEmulator.default
   TermId: {}
   Osascript: require "node-osascript"
 

@@ -1,16 +1,8 @@
 {CompositeDisposable} = require 'atom'
-terminalHandler = require './terminal-handler'
+terminalHandler       = require './terminal-handler'
 
 module.exports =
-  # FIXME: the default terminal is not written.
-  config:
-    preferredTerminal:
-      title: 'Terminal Emulator'
-      description: 'The package supports Terminal.app
-                    and iTerm.app.'
-      type: 'string'
-      default: 'Terminal.app'
-      enum: ['Terminal.app', 'iTerm.app']
+  config: terminalHandler.settings
 
   activate: (state) ->
     # Here we should launch a terminal window
