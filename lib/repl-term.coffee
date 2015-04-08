@@ -1,10 +1,12 @@
 {CompositeDisposable} = require 'atom'
-terminalHandler       = require './terminal-handler'
+settings              = require './settings'
 
 module.exports =
-  config: terminalHandler.settings
+  config: settings
 
   activate: (state) ->
+    # Load terminal-handler module
+    terminalHandler  = require './terminal-handler'
     # Here we should launch a terminal window
     @subscriptions = new CompositeDisposable
     @subscriptions.add atom.commands.add 'atom-workspace',
