@@ -5,15 +5,13 @@ String::addSlashes = ->
 
 module.exports =
   Terminal: "Terminal.app"
-  Focus: atom.config.get('repl-term:focusTerminal')
   TermId: {}
   Osascript: require "node-osascript"
 
   sendToRepl: (code, termId) ->
     scriptPath = __dirname + "/applescript/sendCode.applescript"
     @Osascript.executeFile scriptPath,
-      { term : @Terminal, code : code.addSlashes(), termId : termId,
-      focus : @Focus },
+      { term : @Terminal, code : code.addSlashes(), termId : termId },
       (err, res, raw) ->
         if err
           console.error err
@@ -24,7 +22,6 @@ module.exports =
   launchRepl: (callback) ->
     scriptPath = __dirname + "/applescript/launchTerm.applescript"
     lang       = languageHandler.currentLanguage()
-    console.log "Focus value is " + @Focus
 
     if lang == ""
       console.warn "Unknown file name extension. Launching terminal without a
@@ -32,7 +29,7 @@ module.exports =
 
     # TODO: Set the working directory
     @Osascript.executeFile scriptPath,
-      { term: @Terminal, language : lang, focus : @Focus },
+      { term: @Terminal, language : lang },
       (err, termId, raw) ->
         if err
           console.error err
