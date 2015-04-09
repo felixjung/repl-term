@@ -5,8 +5,8 @@ on quitTermSession(terminalEmu, termId)
       close (window id termId) saving no
     end tell
   else if terminalEmu equals "iTerm.app" then
-    tell application "Finder"
-      display dialog "iTerm is not yet supported. Please choose Terminal.app instead."
+    set iTermLibrary to (load script file "iTermLibrary.applescript")
+    tell application "iTerm"
     end tell
   end if
 end quitTermSession
