@@ -20,6 +20,8 @@ Preferences: Open Atom and go to Preferences > Packages, search for repl-term, a
 
 Currently supported languages and corresponding REPLs are Julia, R, and Python. Trying to launch a REPL for any other file type will simply open a new terminal window.
 
+This package was inspired by the package [r-exec](https://github.com/hafen/atom-r-exec). I've also taken some tiny bits of code from there.
+
 ## Planned features
 - Support for iTerm.app
 - Option to activate Terminal after sending code
