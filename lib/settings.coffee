@@ -1,6 +1,6 @@
 module.exports =
-  terminalEmulator:
-    description: 'Choose the terminal emulator to run your REPL in.'
-    type: 'string'
-    enum: ['Terminal.app', 'iTerm.app']
-    default: 'Terminal.app'
+  focusTerminal:
+    description: 'Should Terminal.app move into focus after sending a command
+                  to the REPL?'
+    type: 'boolean'
+    default: false

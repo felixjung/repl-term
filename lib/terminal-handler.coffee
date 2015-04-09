@@ -4,14 +4,16 @@ String::addSlashes = ->
   @replace(/[\\""]/g, "\\$&").replace /\u0000/g, "\\0"
 
 module.exports =
-  Terminal: atom.config.get('repl-term.terminalEmulator')
+  Terminal: "Terminal.app"
+  Focus: atom.config.get('repl-term:focusTerminal')
   TermId: {}
   Osascript: require "node-osascript"
 
   sendToRepl: (code, termId) ->
     scriptPath = __dirname + "/applescript/sendCode.applescript"
     @Osascript.executeFile scriptPath,
-      { term : @Terminal, code : code.addSlashes(), termId : termId },
+      { term : @Terminal, code : code.addSlashes(), termId : termId,
+      focus : @Focus },
       (err, res, raw) ->
         if err
           console.error err
@@ -22,6 +24,7 @@ module.exports =
   launchRepl: (callback) ->
     scriptPath = __dirname + "/applescript/launchTerm.applescript"
     lang       = languageHandler.currentLanguage()
+    console.log "Focus value is " + @Focus
 
     if lang == ""
       console.warn "Unknown file name extension. Launching terminal without a
@@ -29,7 +32,8 @@ module.exports =
 
     # TODO: Set the working directory
     @Osascript.executeFile scriptPath,
-      { term: @Terminal, language : lang }, (err, termId, raw) ->
+      { term: @Terminal, language : lang, focus : @Focus },
+      (err, termId, raw) ->
         if err
           console.error err
         else
