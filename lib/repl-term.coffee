@@ -1,6 +1,8 @@
 {CompositeDisposable} = require 'atom'
+settings              = require './settings'
 
 module.exports =
+  config: settings
 
   activate: (state) ->
     # Load terminal-handler module
