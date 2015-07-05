@@ -3,7 +3,10 @@ module.exports =
 
   currentLanguage: ->
     # Obtain filename extension
-    language  = atom.workspace.getActiveEditor().getGrammar().name.toLowerCase()
+    language  = atom.workspace.getActiveTextEditor().getGrammar().name
+      .toLowerCase()
+
+    console.info "Language is: " + language
 
     if language == "r"
       language = "R"
