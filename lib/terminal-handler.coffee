@@ -4,7 +4,7 @@ String::addSlashes = ->
   @replace(/[\\""]/g, "\\$&").replace /\u0000/g, "\\0"
 
 module.exports =
-  Terminal: atom.config.get('repl-term.terminalEmulator')
+  Terminal: "Terminal.app"
   TermId: {}
   Osascript: require "node-osascript"
 
