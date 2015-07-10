@@ -8,6 +8,15 @@ module.exports =
   TermId: {}
   Osascript: require "node-osascript"
 
+  focusWindow: () ->
+    if @FocusTerminal
+      scriptPath = __dirname + "/applescript/activateWindow.applescript"
+      @Osascript.executeFile scriptPath,
+        { termEmu : @Terminal, termName : @TermName },
+        (err, res, raw) ->
+          if err
+            console.error err
+
   sendToRepl: (code, termId) ->
     scriptPath = __dirname + "/applescript/sendCode.applescript"
     @Osascript.executeFile scriptPath,
@@ -17,6 +26,8 @@ module.exports =
           console.error err
         else
           console.info "Sent code to REPL."
+
+    @focusWindow
 
   # Starts a new terminal window and launches the REPL
   launchRepl: (callback) ->
@@ -29,11 +40,14 @@ module.exports =
 
     # TODO: Set the working directory
     @Osascript.executeFile scriptPath,
-      { term: @Terminal, language : lang }, (err, termId, raw) ->
+      { term: @Terminal, language : lang, termName: @TermName},
+      (err, termId, raw) ->
         if err
           console.error err
         else
           setTimeout callback, 1000, termId
+
+    @focusWindow
 
   # Closes the terminal window, if still open
   quitRepl: ->
@@ -86,6 +100,8 @@ module.exports =
 
       @sendToRepl command, termId
 
+    @focusWindow
+
   # Sends a command to the REPL
   send: ->
     # TODO:
@@ -97,3 +113,5 @@ module.exports =
         atom.workspace.getActiveEditor().selectLine()
         code = atom.workspace.getActiveEditor().getSelection()
       @sendToRepl code.getText(), termId
+
+    @focusWindow
