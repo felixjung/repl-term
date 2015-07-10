@@ -34,9 +34,5 @@ on initTermSession(terminalEmu, initCommand, termName)
   end if
 end initTermSession
 
--- set term to "Terminal.app"
--- set language to "julia"
-set termName to "REPL Term"
-
 -- Call the initialization function
 initTermSession(term, language, termName)
