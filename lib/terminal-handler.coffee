@@ -91,9 +91,9 @@ module.exports =
     @getRepl (termId) =>
       console.log "Terminal: " + @Terminal
       # Save file before doing anything
-      atom.workspace.getActiveEditor().save()
+      atom.workspace.getActiveTextEditor().save()
       # Obtain the file path
-      filePath = atom.workspace.getActiveEditor().getPath()
+      filePath = atom.workspace.getActiveTextEditor().getPath()
 
       # Build command for sourcing files in language
       command = languageHandler.sourcingCommand filePath
@@ -108,10 +108,10 @@ module.exports =
     # - Clean up this code
     # - Remove empty lines
     @getRepl (termId) =>
-      code = atom.workspace.getActiveEditor().getSelection()
-      if code.getText().addSlashes() == ""
-        atom.workspace.getActiveEditor().selectLine()
-        code = atom.workspace.getActiveEditor().getSelection()
-      @sendToRepl code.getText(), termId
+      code = atom.workspace.getActiveTextEditor().getSelectedText()
+      if code == ""
+        code = atom.workspace.getActiveTextEditor().getLastCursor()
+          .getCurrentBufferLine()
+      @sendToRepl code, termId
 
     @focusWindow

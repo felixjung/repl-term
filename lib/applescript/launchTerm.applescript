@@ -5,7 +5,6 @@ on initTermSession(terminalEmu, initCommand, termName)
     tell application "Terminal"
       set termTab to do script initCommand
       delay waitTime
-      set custom title of termTab to termName
       set termTabTty to tty of termTab
       set termWindows to every window
 
