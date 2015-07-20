@@ -11,7 +11,6 @@ module.exports =
     if language == "r"
       language = "R"
 
-    console.info "Language is #{language}."
     if language not in @SupportedLanguages
       language = ""
       console.warn "Unknown language. Replacing with empty string."
