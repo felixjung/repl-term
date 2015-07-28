@@ -1,7 +1,7 @@
 {
   "name": "repl-term",
   "main": "./lib/repl-term",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "A package for sending code to a REPL running in Terminal.app.",
   "repository": "https://github.com/felixjung/repl-term",
   "license": "MIT",
