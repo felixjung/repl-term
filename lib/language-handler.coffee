@@ -1,5 +1,12 @@
+_ = require("lodash")
+
 module.exports =
-  SupportedLanguages: ["julia", "R", "python"]
+  ReplDict: {
+    "julia": "julia",
+    "r": "R",
+    "python": "python",
+    "javascript": "node"
+  }
 
   currentLanguage: ->
     # Obtain filename extension
@@ -8,14 +15,11 @@ module.exports =
 
     console.info "Language is: " + language
 
-    if language == "r"
-      language = "R"
+    if language not in _.keys(@ReplDict)
+      console.warn "Unknown language, returning empty string."
+      return ""
 
-    if language not in @SupportedLanguages
-      language = ""
-      console.warn "Unknown language. Replacing with empty string."
-
-    return language
+    return @ReplDict[language]
 
   sourcingCommand: (filePath) ->
     # Obtain the right sourcing command for the language
