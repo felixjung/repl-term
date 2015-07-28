@@ -31,6 +31,12 @@ module.exports =
 
   # Starts a new terminal window and launches the REPL
   launchRepl: (callback) ->
+    if !atom.workspace.getActiveTextEditor()
+      atom.notifications.addInfo(
+        'Open a file before invoking REPL Term.'
+      )
+
+      return
     scriptPath = __dirname + "/applescript/launchTerm.applescript"
     lang       = languageHandler.currentLanguage()
 
